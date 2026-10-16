@@ -1,17 +1,19 @@
 """FastAPI 入口。
 
-S1 阶段挂两类路由：
-- ``/api/health`` 配置自检，不调用模型，可安全用于探活
-- ``/api/*``      mock 路由，返回固定数据，供前端开发者立即开工（见前置文档 7.3）
+当前挂三类路由：
+- ``/api/health``   配置自检，不调用模型，可安全用于探活
+- ``/api/upload``   .docx 简历解析（S2）
+- ``/api/sessions`` mock 路由，返回固定数据，供前端开发者立即开工（见前置文档 7.3）
 
-S2 起逐段替换 mock：S4 上真实 Agent 循环，S7 补历史与导出。
+mock 是临时脚手架：S4 上真实 Agent 循环后由 sessions.py 接管并删除。
+S7 再补历史记录与导出。
 """
 
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import mock
+from app.api import mock, upload
 from app.config import settings
 
 app = FastAPI(
@@ -31,6 +33,7 @@ if settings.cors_origins:
         allow_headers=["*"],
     )
 
+app.include_router(upload.router)
 app.include_router(mock.router)
 
 
