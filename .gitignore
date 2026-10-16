@@ -237,7 +237,10 @@ frontend/dist/
 # SQLite 数据库（存有用户简历原文，严禁入库）
 *.db
 *.db-journal
+*.db-wal
+*.db-shm
 *.sqlite3
+backend/data/
 
 # 课程给定的需求文档，不入库，仅保留在本机
 Ai简历优化项目需求.doc

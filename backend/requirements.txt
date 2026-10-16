@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+openai
+pydantic
+python-multipart     # FastAPI 文件上传所需
+python-docx          # DOCX 简历解析与生成
+python-dotenv        # 读取 .env 中的 API Key
+sse-starlette        # SSE 流式输出
+
+# 历史存储用 Python 内置 sqlite3，无需声明
+# PDF 支持已按 D1 移除；如需再加 pypdf
