@@ -218,3 +218,26 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ── 本项目补充规则 ────────────────────────────────
+# Claude Code 本地会话配置（权限记录，与项目运行无关，不入库）
+.claude/
+
+# 密钥：API Key 仅存本机，严禁入库（见《项目前置文档》12.5）
+.env.*
+!.env.example
+
+# PyCharm 工程配置
+.idea/
+
+# 前端 Vue 3 + Vite
+node_modules/
+frontend/dist/
+
+# SQLite 数据库（存有用户简历原文，严禁入库）
+*.db
+*.db-journal
+*.sqlite3
+
+# 课程给定的需求文档，不入库，仅保留在本机
+Ai简历优化项目需求.doc
